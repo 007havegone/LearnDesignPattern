@@ -36,13 +36,13 @@ project ("LearnDesignPattern")
 
 
 # Add source to this project's executable.
+
+# SolidDesignPrinciples
 file(GLOB_RECURSE SRP_SOURCES "SolidDesignPrinciples/SRP/*.cpp")
 file(GLOB_RECURSE OCP_SOURCES "SolidDesignPrinciples/OCP/*.cpp")
 file(GLOB_RECURSE LSP_SOURCES "SolidDesignPrinciples/LSP/*.cpp")
 file(GLOB_RECURSE ISP_SOURCES "SolidDesignPrinciples/ISP/*.cpp")
 file(GLOB_RECURSE DIP_SOURCES "SolidDesignPrinciples/DIP/*.cpp")
-
-
 add_executable (SRPProgram ${DIP_SOURCES})
 target_link_libraries(SRPProgram PRIVATE ${Boost_LIBRARIES})
 target_include_directories(SRPProgram PRIVATE ${Boost_INCLUDE_DIRS})
@@ -50,3 +50,12 @@ add_executable (OCPProgram ${OCP_SOURCES})
 add_executable (LSPProgram ${LSP_SOURCES})
 add_executable (ISPProgram ${ISP_SOURCES})
 add_executable (DIPProgram ${DIP_SOURCES})
+
+# Builder
+file(GLOB_RECURSE Build_SOURCE "Builder/Builder.cpp")
+file(GLOB_RECURSE GroBuilder_SOURCE "Builder/GroovyStyleBuilder.cpp")
+add_executable (BuilderProgram ${Build_SOURCE})
+add_executable (GroBuilderProgram ${GroBuilder_SOURCE})
+
+file(GLOB_RECURSE BuilderFacets_SOURCE "Builder/BuilderFacets/*.cpp" "Builder/BuilderFacets/*.h")
+add_executable(BuilderFacetsProgram ${BuilderFacets_SOURCE})
