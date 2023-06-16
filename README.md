@@ -1,5 +1,7 @@
 # Enviroment Setting
 
+Current only config the env for the Window with Visual studio 2022 x64.
+
 1. Install vcpkg
 ```
 git clone https://github.com/microsoft/vcpkg.git
