@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <cstdio>
 using namespace std;
 
 enum class Color { red, green, blue };
@@ -160,6 +159,5 @@ int main()
   // auto spec2 = SizeSpecification{Size::large} &&
   //              ColorSpecification{Color::blue};
 
-  getchar();
   return 0;
 }

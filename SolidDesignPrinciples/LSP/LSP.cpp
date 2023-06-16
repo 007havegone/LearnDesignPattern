@@ -2,7 +2,6 @@
 // w/o altering the correctness of the program
 
 #include <iostream>
-#include <cstdio>
 
 class Rectangle
 {
@@ -55,6 +54,5 @@ int main()
   Square s{ 5 };
   process(s);
 
-  getchar();
   return 0;
 }
