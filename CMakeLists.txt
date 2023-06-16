@@ -54,8 +54,19 @@ add_executable (DIPProgram ${DIP_SOURCES})
 # Builder
 file(GLOB_RECURSE Build_SOURCE "Builder/Builder.cpp")
 file(GLOB_RECURSE GroBuilder_SOURCE "Builder/GroovyStyleBuilder.cpp")
+file(GLOB_RECURSE BuilderFacets_SOURCE "Builder/BuilderFacets/*.cpp" "Builder/BuilderFacets/*.h")
 add_executable (BuilderProgram ${Build_SOURCE})
 add_executable (GroBuilderProgram ${GroBuilder_SOURCE})
-
-file(GLOB_RECURSE BuilderFacets_SOURCE "Builder/BuilderFacets/*.cpp" "Builder/BuilderFacets/*.h")
 add_executable(BuilderFacetsProgram ${BuilderFacets_SOURCE})
+
+
+
+# Factory
+file(GLOB_RECURSE Factory_SOURCE "Factory/Factory.cpp")
+file(GLOB_RECURSE FactoryMethod_SOURCE "Factory/FactoryMethod.cpp")
+file(GLOB_RECURSE InnerFactory_SOURCE "Factory/InnerFactory.cpp")
+file(GLOB_RECURSE AbsFactory_SOURCE "Factory/AbstarctFactory/*.cpp" "Factory/AbstarctFactory/*.h")
+add_executable(FactoryProgram ${Factory_SOURCE})
+add_executable(FactoryMethodProgram ${FactoryMethod_SOURCE})
+add_executable(InnerFactoryProgram ${InnerFactory_SOURCE})
+add_executable(AbsFactoryProgram ${AbsFactory_SOURCE})
