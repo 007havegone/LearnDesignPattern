@@ -13,9 +13,7 @@ bootstrap-vcpkg.sh  # on Linux
 2. Install Boost with Vcpkg
 ```
 # direct install
-.\vckpg.exe install boost
-# install a specific version
-.\vcpkg.exe install boost:x64-window-static 
+.\vckpg.exe install boost:x64-windows
 ```
 
 3. Add the Env into your PC

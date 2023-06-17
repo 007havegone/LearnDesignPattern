@@ -3,7 +3,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-#set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
 
 # Enable Hot Reload for MSVC compilers if supported.
@@ -24,7 +24,7 @@ set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_STATIC_MULTITHREAD ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
-find_package(Boost REQUIRED)
+find_package(Boost REQUIRED COMPONENTS serialization)
 
 
 
@@ -43,7 +43,7 @@ file(GLOB_RECURSE OCP_SOURCES "SolidDesignPrinciples/OCP/*.cpp")
 file(GLOB_RECURSE LSP_SOURCES "SolidDesignPrinciples/LSP/*.cpp")
 file(GLOB_RECURSE ISP_SOURCES "SolidDesignPrinciples/ISP/*.cpp")
 file(GLOB_RECURSE DIP_SOURCES "SolidDesignPrinciples/DIP/*.cpp")
-add_executable (SRPProgram ${DIP_SOURCES})
+add_executable (SRPProgram ${SRP_SOURCES})
 target_link_libraries(SRPProgram PRIVATE ${Boost_LIBRARIES})
 target_include_directories(SRPProgram PRIVATE ${Boost_INCLUDE_DIRS})
 add_executable (OCPProgram ${OCP_SOURCES})
@@ -70,3 +70,10 @@ add_executable(FactoryProgram ${Factory_SOURCE})
 add_executable(FactoryMethodProgram ${FactoryMethod_SOURCE})
 add_executable(InnerFactoryProgram ${InnerFactory_SOURCE})
 add_executable(AbsFactoryProgram ${AbsFactory_SOURCE})
+
+
+# Protopty
+file(GLOB_RECURSE Proto_SOURCE "Prototype/Prototype.cpp")
+add_executable(ProtoProgram ${Proto_SOURCE})
+target_link_libraries(ProtoProgram PRIVATE ${Boost_LIBRARIES})
+target_include_directories(ProtoProgram PRIVATE ${Boost_INCLUDE_DIRS})
