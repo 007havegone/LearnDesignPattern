@@ -2,7 +2,7 @@
 # project specific logic here.
 #
 cmake_minimum_required (VERSION 3.8)
-
+project ("LearnDesignPattern")
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
 
 
@@ -11,8 +11,6 @@ if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
-
-project ("LearnDesignPattern")
 
 # Use the C++ 20
 set(CMAKE_CXX_STANDARD 20)
@@ -25,7 +23,7 @@ set(Boost_USE_STATIC_MULTITHREAD ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost REQUIRED COMPONENTS serialization)
-
+find_path(BEXT_DI_INCLUDE_DIRS "boost/di.hpp")
 
 
 
@@ -77,3 +75,16 @@ file(GLOB_RECURSE Proto_SOURCE "Prototype/Prototype.cpp")
 add_executable(ProtoProgram ${Proto_SOURCE})
 target_link_libraries(ProtoProgram PRIVATE ${Boost_LIBRARIES})
 target_include_directories(ProtoProgram PRIVATE ${Boost_INCLUDE_DIRS})
+
+
+# Singleton
+add_executable(MultitionProgram "Singleton/Multiton.cpp")
+add_executable(SingletonLifeProgram "Singleton/SingletonLife.cpp")
+target_link_libraries(SingletonLifeProgram PRIVATE ${Boost_LIBRARIES})
+target_include_directories(SingletonLifeProgram PRIVATE ${BEXT_DI_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+
+enable_testing()
+find_package(GTest CONFIG REQUIRED)
+add_executable(SingletonProgram "Singleton/Singleton.hpp" "Singleton/SingletonTests.cpp")    
+target_link_libraries(SingletonProgram PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+add_test(AllTestsInMain SingletonProgram)
