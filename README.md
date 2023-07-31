@@ -13,7 +13,7 @@ bootstrap-vcpkg.sh  # on Linux
 2. Install Boost and lib with Vcpkg
 ```
 # boost library
-.\vckpg.exe install boost:x64-windows
+.\vcpkg.exe install boost:x64-windows
 # boost dependency injectoion library
 .\vcpkg.exe install bext-di:x64-windows
 # google test
